@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../utils/api";
 
 export default function CreateLoan() {
   const navigate = useNavigate();
@@ -110,7 +110,7 @@ const principal = Number(form.amount);
       date: new Date(form.date)
     };
 
-    await axios.post(`${API_URL}/loans`, formattedData);
+    await api.post("/loans", formattedData);
 
     alert("Loan Created Successfully");
     navigate("/loans");

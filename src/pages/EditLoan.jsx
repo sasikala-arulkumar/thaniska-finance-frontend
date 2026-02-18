@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../utils/api";
 
 export default function EditLoan() {
   const { id } = useParams();
@@ -10,8 +10,8 @@ export default function EditLoan() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/loans/${id}`)
+    api
+      .get(`/loans/${id}`)
       .then((res) => {
         const data = res.data;
         setForm({
@@ -38,7 +38,7 @@ export default function EditLoan() {
     e.preventDefault();
 
     try {
-      await axios.put(`${API_URL}/loans/${id}`, form);
+      await api.put(`/loans/${id}`, form);
       alert("Loan Updated Successfully");
       navigate("/loans");
     } catch (error) {

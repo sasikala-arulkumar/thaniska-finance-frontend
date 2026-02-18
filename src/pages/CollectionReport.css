@@ -11,11 +11,13 @@
 
 .report-controls {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 25px;
 }
 
 .report-controls input {
+  flex: 1 1 180px;
   padding: 10px;
   border-radius: 6px;
   border: none;
@@ -58,12 +60,14 @@
 .table-card {
   background: #020617;
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid #1e293b;
 }
 
 table {
   width: 100%;
+  min-width: 680px;
   border-collapse: collapse;
 }
 
@@ -82,4 +86,10 @@ tbody tr {
 
 tbody tr:hover {
   background: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .report-container {
+    padding: 16px;
+  }
 }
